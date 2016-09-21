@@ -43,14 +43,14 @@ class Client(object):
     def __init__(self, host, username, password, port=443, path='/wsman',
                  protocol='https'):
         self.host = host
-        self.username = username
-        self.password = password
+        self.username = username.strip()
+        self.password = password.strip()
         self.port = port
         self.path = path
         self.protocol = protocol
         self.endpoint = ('%(protocol)s://%(host)s:%(port)s%(path)s' % {
             'protocol': self.protocol,
-            'host': self.host,
+            'host': self.host.strip(),
             'port': self.port,
             'path': self.path})
 
